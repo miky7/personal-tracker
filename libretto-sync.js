@@ -6,6 +6,9 @@
 (function(){
   'use strict';
   var CFG = window.LIBRETTO_CONFIG || {};
+  // Accetta anche l'indirizzo copiato con /rest/v1/ in fondo: a Supabase serve solo https://xxxx.supabase.co
+  if (CFG.url) CFG.url = String(CFG.url).trim().replace(/\/(rest|auth)\/v1\/?.*$/i, '').replace(/\/+$/, '');
+  if (CFG.anonKey) CFG.anonKey = String(CFG.anonKey).trim();
   var CONFIGURED = !!(CFG.url && CFG.anonKey && !/INCOLLA/.test(CFG.url + CFG.anonKey));
   var COLLS = ['days', 'expenses', 'settings', 'plan'];
   var K_CACHE = 'lp_sb_cache', K_OUT = 'lp_sb_outbox', K_USER = 'lp_sb_user';
@@ -179,7 +182,8 @@
       } catch(e){
         var m = (e && e.message) || '';
         $('#gMsg').textContent = /rate|seconds/i.test(m) ? 'Troppe richieste: aspetta un minuto e riprova.'
-          : /expired|invalid/i.test(m) ? 'Codice scaduto o sbagliato: richiedine un altro.'
+          : step === 'code' && /expired|invalid|token/i.test(m) ? 'Codice scaduto o sbagliato: richiedine un altro.'
+          : /api key|apikey|path/i.test(m) ? 'Configurazione di Supabase sbagliata: controlla URL e chiave in config.js.'
           : /not allowed|signups|not found/i.test(m) ? 'Questa email non è abilitata.'
           : 'Non è andata: ' + (m || 'controlla la connessione');
       } finally { btn.disabled = false; }

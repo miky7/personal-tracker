@@ -1,7 +1,7 @@
 /* Libretto Personale: service worker.
    Pagina e file dell'app: prima la rete (così gli aggiornamenti arrivano subito), copia salvata se offline.
    Font Google: dalla copia salvata. Le chiamate a Supabase non passano di qui. */
-const VERSION = 'libretto-v3';
+const VERSION = 'libretto-v4';
 const SHELL = [
   './', 'index.html', 'config.js', 'libretto-sync.js', 'vendor/supabase-2.117.3.js', 'manifest.json',
   'img/hero.jpg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'

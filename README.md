@@ -10,11 +10,11 @@ It is a **PWA**: it installs on the iPhone Home Screen and on a PC (Edge), opens
 | **Home** | Greeting, three rings (study, protein, workouts), the week's grade, today's tiles and a Mon–Sun strip |
 | **Today** | Study (hours), workout (type and duration), protein, reading and notes, sleep (hours slept) |
 | **Expenses** | Entry in 2-3 taps, recurring expenses, monthly calendar, summary by category |
-| **Charts** | Study and protein over the last 14 days, workout/reading calendar, study hours per week |
+| **Charts** | Study or sleep hours (switchable) and protein over the last 14 days, workout/reading calendar, study hours per week |
 | **Report** | Grade /30 (with honours), comparison with the previous week, generated summary and a day-by-day table |
 | **Plan** | Editable gym workout plan |
 | **Foods** | Protein content of about 45 common foods |
-| **Goals** | Weight and g/kg (protein target), daily study hours, workouts per week; code for the widget |
+| **Goals** | Weight and g/kg (protein target), daily study hours, workouts per week, sleep hours per night (default 7.5); code for the widget |
 
 **How the grade is computed:** the average of three ratios (each capped at 1) multiplied by 30:
 hours studied / (goal × days elapsed), workouts / goal scaled to the days elapsed, days with the protein target met / days elapsed. Reading and sleep do not count toward the grade.

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Libretto Personale</title>
-<meta name="description" content="Il libretto di Michele: studio, allenamento, proteine, lettura e spese.">
+<title>Personal Tracker</title>
+<meta name="description" content="Il tracker personale di Michele: studio, allenamento, proteine, lettura e spese.">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#ECEFF0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A1114" media="(prefers-color-scheme: dark)">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Libretto">
+<meta name="apple-mobile-web-app-title" content="Personal Tracker">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -582,8 +582,8 @@ html.gated,html.gated body{overflow:hidden}
 <!-- accesso con email (solo PWA) -->
 <div id="gate" hidden>
   <div class="gbox">
-    <div class="glogo"><span class="logo" aria-hidden="true">L</span></div>
-    <h1>Libretto<span>.</span></h1>
+    <div class="glogo"><span class="logo" aria-hidden="true">P</span></div>
+    <h1>Personal Tracker<span>.</span></h1>
     <p>Accedi con la tua email: ti arriva un codice da scrivere qui sotto.</p>
     <form id="gForm" novalidate>
       <label id="gLbl" for="gInput">La tua email</label>
@@ -598,7 +598,7 @@ html.gated,html.gated body{overflow:hidden}
 
 <!-- barra laterale (PC) -->
 <aside class="side" aria-label="Sezioni">
-  <div class="brandmark"><span class="logo" aria-hidden="true">L</span><div><b>Libretto</b><small>Personale</small></div></div>
+  <div class="brandmark"><span class="logo" aria-hidden="true">P</span><div><b>Personal</b><small>Tracker</small></div></div>
   <nav class="snav">
     <button class="navbtn" data-v="home" style="--c:var(--c-prot)"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></span>Home</button>
     <button class="navbtn" data-v="oggi" style="--c:var(--c-study)"><span class="ic"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/></svg></span>Oggi</button>
@@ -620,9 +620,9 @@ html.gated,html.gated body{overflow:hidden}
 
 <div class="main">
   <header class="top">
-    <div id="pageHead" hidden><span class="eyebrow">Libretto personale</span><h1 id="pageTitle">Oggi</h1><p id="pageSub"></p></div>
+    <div id="pageHead" hidden><span class="eyebrow">Personal Tracker</span><h1 id="pageTitle">Oggi</h1><p id="pageSub"></p></div>
     <div class="banner sync" id="syncBanner" hidden>Sei offline: le modifiche restano su questo dispositivo e si sincronizzano appena torna la rete.</div>
-    <div class="banner" id="localBanner" hidden>Stai usando il libretto senza accesso: i dati restano solo in questo browser.</div>
+    <div class="banner" id="localBanner" hidden>Stai usando il tracker senza accesso: i dati restano solo in questo browser.</div>
   </header>
 
   <!-- HOME -->

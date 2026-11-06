@@ -47,8 +47,8 @@ function parseBlob(t) {
 }
 async function askCfg(msg) {
   const a = new Alert();
-  a.title = "Collega il Libretto";
-  a.message = (msg ? msg + "\n\n" : "") + "Nel Libretto apri Obiettivi → \"Copia codice per il widget\", poi incolla qui.";
+  a.title = "Collega il Tracker";
+  a.message = (msg ? msg + "\n\n" : "") + "Nel Tracker apri Obiettivi → \"Copia codice per il widget\", poi incolla qui.";
   a.addTextField("LIBRETTO|https://…", Pasteboard.paste() || "");
   a.addAction("Salva");
   a.addCancelAction("Annulla");
@@ -166,7 +166,7 @@ async function build(d, cfg, note) {
 
   // intestazione
   const h = w.addStack(); h.centerAlignContent();
-  const b = h.addText("Libretto"); b.font = Font.heavyRoundedSystemFont(14); b.textColor = C.fg;
+  const b = h.addText("Personal Tracker"); b.font = Font.heavyRoundedSystemFont(14); b.textColor = C.fg;
   const dt = h.addText("."); dt.font = Font.heavyRoundedSystemFont(14); dt.textColor = C.prot;
   h.addSpacer();
   if (d && fam !== "small") {
@@ -212,7 +212,7 @@ let stop = false;
 if (config.runsInApp) {
   if (cfg) {
     const a = new Alert();
-    a.title = "Libretto";
+    a.title = "Personal Tracker";
     a.addAction("Mostra il widget");
     a.addAction("Cambia codice");
     a.addCancelAction("Chiudi");
@@ -228,11 +228,11 @@ let data = null, note = null;
 if (stop) {
   // chiuso dall'utente
 } else if (!cfg) {
-  note = "Apri questo script in Scriptable per collegarlo al Libretto.";
+  note = "Apri questo script in Scriptable per collegarlo al Tracker.";
 } else {
   try { data = await load(cfg); }
   catch (e) {
-    if (e.auth) { note = "Codice non valido: copialo di nuovo dal Libretto."; }
+    if (e.auth) { note = "Codice non valido: copialo di nuovo dal Tracker."; }
     else {
       data = cached();
       note = data ? "offline · dati delle " + hhmm(data.fetchedAt) : "Nessuna connessione.";

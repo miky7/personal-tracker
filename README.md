@@ -1,4 +1,4 @@
-# Libretto Personale
+# Personal Tracker
 
 My student record book as an app: study hours, workouts, protein, reading, sleep and expenses, with charts and a **weekly grade out of 30** (the Italian university scale).
 It is a **PWA**: it installs on the iPhone Home Screen and on a PC (Edge), opens full screen and also works offline. Data lives on **Supabase**, so phone and computer stay in sync.

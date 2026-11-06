@@ -4,6 +4,6 @@
    La chiave anon/publishable può stare in un repo pubblico: i dati sono protetti dalla Row Level Security.
    NON mettere mai qui la chiave service_role / secret. */
 window.LIBRETTO_CONFIG = {
-  url: "INCOLLA_QUI_PROJECT_URL",      // es. "https://abcdefghijklmnop.supabase.co"
-  anonKey: "INCOLLA_QUI_CHIAVE_ANON"   // la "anon public" (eyJ...) oppure la "publishable" (sb_publishable_...)
+  url: "https://fjkttcrumvkmnzeujtzd.supabase.co/rest/v1/",      // es. "https://abcdefghijklmnop.supabase.co"
+  anonKey: "sb_publishable_TW7M--fX_XJhMPcYBj5b4w_uGkIqxdG"   // la "anon public" (eyJ...) oppure la "publishable" (sb_publishable_...)
 };

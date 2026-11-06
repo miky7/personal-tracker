@@ -1,64 +1,64 @@
 # Libretto Personale
 
-Il mio libretto di studente in forma di app: ore di studio, allenamenti, proteine, lettura, sonno e spese, con grafici e un **voto settimanale in trentesimi**.
-È una **PWA**: si installa sulla schermata Home dell'iPhone e su PC (Edge), si apre a tutto schermo e funziona anche offline. I dati stanno su **Supabase**, così telefono e computer restano sincronizzati.
+My student record book as an app: study hours, workouts, protein, reading, sleep and expenses, with charts and a **weekly grade out of 30** (the Italian university scale).
+It is a **PWA**: it installs on the iPhone Home Screen and on a PC (Edge), opens full screen and also works offline. Data lives on **Supabase**, so phone and computer stay in sync.
 
-## Cosa fa
+## What it does
 
-| Sezione | Contenuto |
+| Section | Content |
 |---|---|
-| **Home** | Saluto, tre anelli (studio, proteine, allenamenti), voto della settimana, riquadri del giorno e striscia lun–dom |
-| **Oggi** | Studio (ore), allenamento (tipo e durata), proteine, lettura e note, sonno (ore dormite) |
-| **Spese** | Inserimento in 2-3 tocchi, spese ricorrenti, calendario del mese, resoconto per categoria |
-| **Grafici** | Studio e proteine degli ultimi 14 giorni, calendario allenamenti/lettura, ore di studio per settimana |
-| **Resoconto** | Voto /30 (con lode), confronto con la settimana prima, testo generato e tabella giorno per giorno |
-| **Scheda** | Scheda della palestra modificabile |
-| **Alimenti** | Proteine di circa 45 cibi comuni |
-| **Obiettivi** | Peso e g/kg (fabbisogno proteico), ore di studio al giorno, allenamenti a settimana; codice per il widget |
+| **Home** | Greeting, three rings (study, protein, workouts), the week's grade, today's tiles and a Mon–Sun strip |
+| **Today** | Study (hours), workout (type and duration), protein, reading and notes, sleep (hours slept) |
+| **Expenses** | Entry in 2-3 taps, recurring expenses, monthly calendar, summary by category |
+| **Charts** | Study and protein over the last 14 days, workout/reading calendar, study hours per week |
+| **Report** | Grade /30 (with honours), comparison with the previous week, generated summary and a day-by-day table |
+| **Plan** | Editable gym workout plan |
+| **Foods** | Protein content of about 45 common foods |
+| **Goals** | Weight and g/kg (protein target), daily study hours, workouts per week; code for the widget |
 
-**Come nasce il voto:** media di tre rapporti (al massimo 1 ciascuno) moltiplicata per 30:
-ore studiate / (obiettivo × giorni trascorsi), allenamenti / obiettivo proporzionato ai giorni trascorsi, giorni con proteine coperte / giorni trascorsi. Lettura e sonno non entrano nel voto.
+**How the grade is computed:** the average of three ratios (each capped at 1) multiplied by 30:
+hours studied / (goal × days elapsed), workouts / goal scaled to the days elapsed, days with the protein target met / days elapsed. Reading and sleep do not count toward the grade.
 
-## Widget per iPhone
+## iPhone widget
 
-Widget nella schermata Home fatto con l'app gratuita [Scriptable](https://scriptable.app): ore di studio di oggi, proteine di oggi e allenamenti della settimana rispetto agli obiettivi.
-Lo script è in [`widget/Libretto-widget.js`](widget/Libretto-widget.js); la pagina [`widget.html`](widget.html) serve a copiarlo sul telefono.
-Il widget legge i dati senza login tramite una funzione Supabase protetta da una chiave personale, generata nell'app (Obiettivi → *Copia codice per il widget*) e salvata solo nel Portachiavi dell'iPhone.
+A Home Screen widget built with the free [Scriptable](https://scriptable.app) app: today's study hours, today's protein and this week's workouts against the goals.
+The script is in [`widget/Libretto-widget.js`](widget/Libretto-widget.js); the [`widget.html`](widget.html) page is there to copy it onto the phone.
+The widget reads data without logging in through a Supabase function protected by a personal key, generated in the app (Goals → *Copy widget code*) and stored only in the iPhone Keychain.
 
-## Struttura del repo
+## Repository layout
 
 ```
-index.html            l'app (HTML, CSS e JS in un'unica pagina)
-config.js             Project URL e chiave pubblica di Supabase
-libretto-sync.js      collegamento a Supabase: accesso, copia locale offline, sincronizzazione in tempo reale
-sw.js                 service worker (funzionamento offline)
-manifest.json         nome, icone e colori dell'app installata
-vendor/               supabase-js 2.117.3 (copia locale, niente CDN)
-icons/  splash/       icone e schermate di avvio per iPhone
-img/hero.jpg          foto della Home
-widget.html, widget/  widget per Scriptable
+index.html            the app (HTML, CSS and JS in a single page)
+config.js             Supabase Project URL and public key
+libretto-sync.js      Supabase link: sign-in, offline local copy, real-time sync
+sw.js                 service worker (offline support)
+manifest.json         name, icons and colours of the installed app
+vendor/               supabase-js 2.117.3 (local copy, no CDN)
+icons/  splash/       icons and launch screens for iPhone
+img/hero.jpg          Home photo
+widget.html, widget/  Scriptable widget
 ```
 
-## Installazione in breve
+## Quick setup
 
-1. **Supabase** (piano gratuito): crea il progetto, crea il tuo utente, esegui nel SQL Editor lo script di installazione (tabella `docs`, Row Level Security, funzioni `widget_new_key` e `widget_data`), disattiva le nuove iscrizioni e aggiungi `{{ .Token }}` al modello email *Magic Link*.
-2. **config.js**: inserisci *Project URL* e chiave *anon* / *publishable*.
-3. **GitHub Pages**: *Settings → Pages → Deploy from a branch → main / (root)*. L'app è su `https://<utente>.github.io/libretto/`.
-4. **iPhone**: Safari → Condividi → *Aggiungi alla schermata Home*. **PC**: Edge → *Installa questo sito come app*.
-5. Accesso con la tua email: arriva un codice da scrivere nell'app.
+1. **Supabase** (free plan): create the project, create your user, run the setup script in the SQL Editor (`docs` table, Row Level Security, `widget_new_key` and `widget_data` functions), disable new sign-ups and add `{{ .Token }}` to the *Magic Link* email template.
+2. **config.js**: fill in the *Project URL* and the *anon* / *publishable* key.
+3. **GitHub Pages**: *Settings → Pages → Deploy from a branch → main / (root)*. The app is served at `https://<username>.github.io/personal-tracker/`.
+4. **iPhone**: Safari → Share → *Add to Home Screen*. **PC**: Edge → *Install this site as an app*.
+5. Sign in with your email: you receive a code to type into the app.
 
-Lo script SQL non è in questo repo perché contiene dati personali.
+The SQL script is not in this repository because it contains personal data.
 
-## Sicurezza
+## Security
 
-- La chiave in `config.js` è **pubblica per natura**: da sola non dà accesso a nessun dato.
-- Ogni riga della tabella appartiene a un utente e la **Row Level Security** permette di leggere e scrivere solo le proprie righe; agli utenti non autenticati la tabella è chiusa.
-- Le nuove iscrizioni sono disattivate: può entrare solo l'utente creato a mano.
-- La chiave del widget non è salvata in chiaro: nel database c'è solo la sua impronta SHA-256, e generarne una nuova invalida la precedente.
-- **Mai** mettere in questo repo la chiave *service_role* / *secret* di Supabase.
+- The key in `config.js` is **public by design**: on its own it gives access to no data.
+- Every row in the table belongs to a user, and **Row Level Security** only allows reading and writing your own rows; the table is closed to unauthenticated users.
+- New sign-ups are disabled: only the manually created user can log in.
+- The widget key is not stored in plain text: the database only holds its SHA-256 hash, and generating a new key invalidates the previous one.
+- **Never** put the Supabase *service_role* / *secret* key in this repository.
 
-## Tecnologie
+## Tech stack
 
-HTML, CSS e JavaScript senza framework e senza build · Supabase (Postgres, Auth, Realtime) · Service Worker e Web App Manifest · Scriptable · Font Google: Bricolage Grotesque, Instrument Sans, JetBrains Mono.
+HTML, CSS and JavaScript with no framework and no build step · Supabase (Postgres, Auth, Realtime) · Service Worker and Web App Manifest · Scriptable · Google Fonts: Bricolage Grotesque, Instrument Sans, JetBrains Mono.
 
-Foto della Home da [Unsplash](https://unsplash.com).
+Home photo from [Unsplash](https://unsplash.com).
